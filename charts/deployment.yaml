@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app-deployment
+  labels:
+    app: api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: example-app
+        imagePullPolicy: IfNotPresent
+        image: exampleapp:1.0
+        resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+        env:
+          - name: ASPNETCORE_URLS
+            value: http://+:80
+        ports:
+          - containerPort: 80
