@@ -4,6 +4,4 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 
 kind load docker-image exampleapp:1.0
 
-kubectl apply -f .\deployment.yaml
-kubectl apply -f .\service.yaml
-# kubectl apply -f .\ingress.yaml
+helm install --debug demo-app ./demo-app 
